@@ -1,0 +1,38 @@
+<table id="patient-table">
+    <thead>
+        <tr>
+            <th>Patient ID</th>
+            <th>Name</th>
+            <th>Disease</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- AJAX response will populate this section -->
+    </tbody>
+</table>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$.ajax({
+    url: '/myapi/patients',
+    type: 'GET',
+    dataType: 'json',
+    success: function(data) {
+        // Populate the table with the retrieved patient data
+        var table = $('#patient-table tbody');
+
+        $.each(data, function(index, patient) {
+            var row = $('<tr>');
+            row.append($('<td>').text(patient.pid));
+            row.append($('<td>').text(patient.pname));
+            row.append($('<td>').text(patient.problem));
+            row.append($('<td>').text(patient.pstatus));
+            table.append(row);
+        });
+    },
+    error: function() {
+        alert('Error retrieving patient data.');
+    }
+});
+</script>

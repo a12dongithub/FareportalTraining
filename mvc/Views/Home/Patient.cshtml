@@ -1,0 +1,11 @@
+@model IEnumerable<patientmgmt.Models.PatientsTable>
+
+<div class="text-center">
+    @foreach(var item in Model){
+        if(item.Pname == ViewBag.MyData){
+        <h2>Doctor Assigned</h2>@item.City
+    <h2>Condition Severity</h2>@item.Pstatus
+        }
+    }
+   
+</div>

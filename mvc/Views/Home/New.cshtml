@@ -1,0 +1,26 @@
+﻿@model patientmgmt.Models.PatientsTable
+
+<form asp-controller = "Home" asp-action="New", method = "Post">
+  <div class="form-group">
+    <label for="pid">Patient ID</label>
+    <input type="Patient ID" class="form-control" id="exampleInputEmail1" placeholder="Enter PID" asp-for = "Pid" >
+  </div>
+  <div class="form-group">
+    <label for="pname">Patient Name</label>
+    <input type="Patient Name" class="form-control" id="exampleInputPassword1" placeholder="Name", asp-for = "Pname" >
+  </div>
+    <div class="form-group">
+    <label for="disease">Disease</label>
+    <input type="Patient disease" class="form-control" id="exampleInputPassword1" placeholder="", asp-for = "Problem" >
+  </div>
+    <div class="form-group">
+    <label for="exampleInputPassword1"  >Patient Status</label>
+    <input type="Patient Status" class="form-control" id="exampleInputPassword1" placeholder="Status", asp-for = "Pstatus" >
+  </div>
+  @* <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div> *@
+  <br>
+  <button type="add" class="btn btn-primary">Add</button>
+</form>

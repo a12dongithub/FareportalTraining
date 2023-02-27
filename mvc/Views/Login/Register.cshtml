@@ -1,0 +1,78 @@
+@model patientmgmt.Models.SameerLmsUser
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<h4>Patient Management System</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="UserName" class="control-label">User Type</label>
+                <select class="form-control" asp-for="UserName" id="user-type" >
+                    <option value="Patient" >Patient</option>
+                    <option value="Doctor" >Doctor</option>
+                </select>
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserContact" class="control-label"></label>
+                <input asp-for="UserContact" class="form-control" />
+                <span asp-validation-for="UserContact" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserEmail" class="control-label"></label>
+                <input asp-for="UserEmail" class="form-control" />
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group" id="patient-fields" style="display: none;">
+                <!-- your fields for patients only -->
+                <label>Patient Status</label>
+                <input type="text" name="patient-field-1" class="form-control">
+                <label>Patient ID</label>
+                <input type="text" name="patient-field-2" class="form-control">
+                <label>Patient Disease</label>
+                <input type="text" name="patient-field-3" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        // show/hide patient fields based on the selection
+        $("#user-type").change(function() {
+            if ($(this).val() == "Patient") {
+                $("#patient-fields").show();
+            } else {
+                $("#patient-fields").hide();
+            }
+        });
+    });
+</script>
+<div>
+    <a asp-action="Login">Login</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<patientmgmt.Models.PatientsTable>
+
+@if(ViewBag.TableData == 1){
+<div class="text-center">
+    @* <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+
+
+    <table class = "table">
+        <tr>
+            <th>Patient ID</th>
+            <th>Patient name</th>
+            <th> Patient Disease</th>
+            <th>Patient Status</th>
+            <th> Action</th>
+        </tr>
+        @foreach(var item in Model){
+            if(item.City == ViewBag.DocData){
+            <tr>
+                <td>@item.Pid</td>
+                <td>@item.Pname</td>
+                <td>@item.Problem</td>
+                <td>@item.Pstatus</td>
+                <td>
+                <a href= "@Url.Action("Edit", new {id = @item.Pid})">Edit</a>
+                <a href= "@Url.Action("Remove", new {id = @item.Pid})">Remove</a>
+                </td>
+            </tr>
+            }
+        }
+    </table>
+</div>
+        }
+else{
+    
+    <h2>No Patients Scheduled</h2>
+}
+<a href = "home/Getpatient">View All Patients</a>
